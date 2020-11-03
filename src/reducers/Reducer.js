@@ -5,12 +5,12 @@ const Reducer = (state = [], action) => {
         case WRITE_JSON:
             return {
                 ...state,
-                inputStore : action.inputJson
+                writeData: action.writeData
             }
         case READ_JSON:
             return {
                 ...state,
-                resultStore : action.oldStore
+                readData: action.oldData
             }
         default:
            return state;

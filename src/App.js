@@ -29,26 +29,32 @@ class App extends React.Component {
 
   onReadClick = () => {
     this.props.readJson();
-    // this.show();
   }
 
-  // show = () => {
-  //   console.log("data to be read", this.props.resultData)
-  // }
 
   render(){
     return(
       <div>
         <Button type={"submit"} onClick={this.onWriteClick} name={"write"}/>
         <Button type={"submit"} onClick={this.onReadClick} name={"read"}/>
+       
+      {this.props.resultData ? this.props.resultData.map((data,i,arr) =>(
+         <ul>
+        <li key ={i}>{data.id}</li>
+        <li key ={i}>{data.username}</li>
+        <li key ={i}>{data.name}</li>
+      <li key ={i}>{data.email}</li>
+      </ul>
+    )):null}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    resultData: state.resultStore ? state.resultStore : ''
+    resultData: state.readData ? state.readData : ''
   }
 }
 

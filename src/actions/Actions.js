@@ -2,20 +2,21 @@ export const READ_JSON = 'READ_JSON'
 export const WRITE_JSON = 'WRITE_JSON'
 
 export function storeJson(inputJson){
+    console.log(inputJson)
     return function(dispatch) {
         dispatch({
             type: WRITE_JSON,
-            inputJson
+            writeData: inputJson
         })
     }
 }
 
 export function readJson() {
     return function(dispatch, getState) {
-        let oldStore = getState().inputStore ? getState().inputStore : [];
+        let oldData = getState().writeData ? getState().writeData : [];
         dispatch({
             type: READ_JSON,
-            oldStore
+            oldData
         })
     }
 }
