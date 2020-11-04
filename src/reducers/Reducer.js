@@ -5,12 +5,14 @@ const Reducer = (state = [], action) => {
         case WRITE_JSON:
             return {
                 ...state,
-                writeData: action.writeData
+                writeData: action.writeData ? action.writeData : []
             }
         case READ_JSON:
             return {
                 ...state,
-                readData: action.oldData
+                readData: action.oldData ? action.oldData : [],
+                text:"hello world",
+                email: "emaill@gmail.com",
             }
         default:
            return state;

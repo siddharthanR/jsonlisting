@@ -2,7 +2,6 @@ export const READ_JSON = 'READ_JSON'
 export const WRITE_JSON = 'WRITE_JSON'
 
 export function storeJson(inputJson){
-    console.log(inputJson)
     return function(dispatch) {
         dispatch({
             type: WRITE_JSON,

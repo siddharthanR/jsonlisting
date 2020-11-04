@@ -31,13 +31,17 @@ class App extends React.Component {
     this.props.readJson();
   }
 
+  display = () => {
+    console.log(this.props.text);
+    console.log(this.props.email);
+  }
 
   render(){
     return(
       <div>
         <Button type={"submit"} onClick={this.onWriteClick} name={"write"}/>
         <Button type={"submit"} onClick={this.onReadClick} name={"read"}/>
-       
+        <Button type={"submit"} onClick={this.display} name={"show"}/>
       {this.props.resultData ? this.props.resultData.map((data,i,arr) =>(
          <ul>
         <li key ={i}>{data.id}</li>
@@ -54,12 +58,14 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
-    resultData: state.readData ? state.readData : ''
+    resultData: state.readData ? state.readData : [],
+    text: state.text ? state.text : '',
+    email: state.email ? state.email : ''
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators(Object.assign({}, jsonAction), dispatch)
-// }
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(Object.assign({}, jsonAction), dispatch)
+}
 
-export default connect(mapStateToProps, jsonAction)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
